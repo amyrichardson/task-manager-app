@@ -19,12 +19,12 @@
 - [ ] call getTasks in post success function to update tasks on DOM
 
 ### Server
-- [ ] Set up node, install express, jquery, body-parser, pg
-- [ ] Set up server w/ task-router.js
-- [ ] Set up pool.js for link to database
+- [x] Set up node, install express, jquery, body-parser, pg
+- [x] Set up server w/ task-router.js
+- [x] Set up pool.js for link to database
 - [ ] Set up get route: (url: /tasks) that makes query to DB for all tasks 'SELECT * FROM tasks' and send back to client
 - [ ] Set up post route: (url: /tasks) that makes query to DB to insert new task 'INSERT INTO tasks (name) VALUES ($1)'
 
 ### Database
-- [ ] Create database task-manager
+- [x] Create database task-manager
 - [ ] Create table tasks w/ columns: id, name, status (DEFAULT = incomplete)
