@@ -11,7 +11,7 @@
 
 
 ### Client
-- [ ] Set up getTasks function w/ ajax get request to server (url: /tasks)
+- [x] Set up getTasks function w/ ajax get request to server (url: /tasks)
 - [ ] Append all tasks to DOM -- use backticks to avoid concatenating
 - [x] Create event listener for add task button
 - [x] Store new task in an object to send to server
@@ -22,7 +22,7 @@
 - [x] Set up node, install express, jquery, body-parser, pg
 - [x] Set up server w/ task-router.js
 - [x] Set up pool.js for link to database
-- [ ] Set up get route: (url: /tasks) that makes query to DB for all tasks 'SELECT * FROM tasks' and send back to client
+- [x] Set up get route: (url: /tasks) that makes query to DB for all tasks 'SELECT * FROM tasks' and send back to client
 - [x] Set up post route: (url: /tasks) that makes query to DB to insert new task 'INSERT INTO tasks (name) VALUES ($1)'
 
 ### Database

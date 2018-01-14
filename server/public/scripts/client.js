@@ -5,6 +5,7 @@ $(document).ready(onReady);
 function onReady () {
 console.log('jq');
 $('#addTask').on('click', createTask);
+getTasks();
 } //end onReady
 
 
@@ -30,3 +31,14 @@ function sendTask (newTask) {
         } //end success
     }); //end ajax POST
 } //end sendTask
+
+// Get all tasks from server
+function getTasks () {
+    $.ajax({
+        method: 'GET',
+        url: '/tasks',
+        success: function(response) {
+            console.log('back from get to server with: ', response); 
+        } //end success
+    }); //end ajax GET
+} //end getTasks
