@@ -30,9 +30,9 @@
 ### More...
 - [x] Users can mark tasks complete (UPDATE task status to complete)
 - [x] Users can delete tasks (DELETE task from database)
-- [ ] Completed tasks have different CSS
-- [ ] Clear input value once task is added
-- [ ] Additional styling (make it look awesome, add an icon, better fonts)
+- [x] Completed tasks have different CSS
+- [x] Clear input value once task is added
+- [x] Additional styling (make it look awesome, add an icon, better fonts)
 - [ ] Add category table and allow users to select a category when adding a task (will require joins)
 - [ ] Add a due date
 - [ ] Allow user to edit task name

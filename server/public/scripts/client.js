@@ -62,6 +62,8 @@ function sendTask (newTask) {
 
 // Get all tasks from server
 function getTasks () {
+    $('#taskNameIn').val('');
+    $('.newTaskForm').hide();
     $.ajax({
         method: 'GET',
         url: '/tasks',
