@@ -2,12 +2,41 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title Here</title>
+    <title>Task Manager</title>
     <script src="vendors/jquery-3.2.1.min.js"></script>
     <script src="scripts/client.js"></script>
     <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
-    <h1>Title Here</h1>
+    <div class="container">
+        <header>
+            <h1>Task Manager</h1>
+            <button id="addTask">Add Task</button>
+        </header>
+        <div>
+            <form class="newTaskForm">
+                <h2>New Task</h2>
+                <p>[ task ]</p><input type="text" id="taskNameIn">
+                <p>[ due date ]</p><input type="date" id="taskDueDateIn">
+                <button id="submitTask">Submit Task</button>
+            </form>
+        </div>
+        <div class="taskList">
+            <h1>Tasks: </h1>
+            <table>
+                <thead>
+                    <th>Task</th>
+                    <th>Status</th>
+                    <th>Complete</th>
+                </thead>
+                <tr>
+                    <td>Call Mom</td>
+                    <td>Incomplete</td>
+                    <td><input type="checkbox" class="markComplete"></td>
+                </tr>
+               
+            </table>
+        </div>
+    </div>
 </body>
 </html>

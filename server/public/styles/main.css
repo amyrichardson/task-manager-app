@@ -1,0 +1,48 @@
+html, body {
+    background-color: lightgrey;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+header {
+    text-align: center;
+    background-color: lightcoral;
+    width: 100%;
+    padding: 10px;
+}
+
+.newTaskForm {
+    display: flex;
+    flex-direction: column;
+    background-color: lightblue;
+    align-items: center;
+    padding: 20px 150px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    
+    text-align: center;
+    font-size: 12pt;
+}
+
+p {
+    margin-bottom: 0px;
+    font-size: 10pt;
+}
+
+.taskList {
+    text-align: center;
+}
+
+th, td {
+    padding: 20px;
+}

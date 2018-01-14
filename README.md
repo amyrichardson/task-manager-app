@@ -27,4 +27,4 @@
 
 ### Database
 - [x] Create database task-manager
-- [ ] Create table tasks w/ columns: id, name, status (DEFAULT = incomplete)
+- [x] Create table tasks w/ columns: id, name, status (DEFAULT = incomplete)
