@@ -30,5 +30,5 @@
 - [x] Create table tasks w/ columns: id, name, status (DEFAULT = incomplete)
 
 ### More...
-- [ ] Users can mark tasks complete (UPDATE task status to complete)
+- [x] Users can mark tasks complete (UPDATE task status to complete)
 - [x] Users can delete tasks (DELETE task from database)

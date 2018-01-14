@@ -5,7 +5,7 @@ const pool = require('../modules/pool');
 //Routes
 //GET, sending data back to client
 router.get('/', (req, res) => {
-    const queryText = 'SELECT * FROM tasks'
+    const queryText = 'SELECT * FROM tasks ORDER BY status DESC'
     pool.query(queryText)
         .then((result) => {
             res.send(result.rows);
@@ -38,5 +38,17 @@ router.delete('/:id', (req, res) => {
             res.sendStatus(500);
         }) //end catch
 }); //end delete
+
+//PUT, updating task's status to complete
+router.put('/:id', (req, res) => {
+    const queryText = 'UPDATE tasks SET status = $1 WHERE id = $2';
+    pool.query(queryText, [req.body.newStatus, req.params.id])
+        .then((result) => {
+            res.sendStatus(201);
+        }) //end then
+        .catch((err) => {
+            res.sendStatus(500);
+        }) //end catch
+})//end put
 
 module.exports = router;

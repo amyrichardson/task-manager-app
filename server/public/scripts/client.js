@@ -6,6 +6,12 @@ function onReady () {
 console.log('jq');
 $('#addTask').on('click', createTask);
 $('#taskTable').on('click', '#deleteTask', deleteTask);
+$('#taskTable').on('change', '#markComplete', function(){
+    if(this.checked) {
+        let id = $(this).closest('tr').data('id');
+        markComplete(id);
+    }
+})
 getTasks();
 } //end onReady
 
@@ -46,7 +52,11 @@ function displayTasks (taskList) {
     for (let i = 0; i < taskList.length; i++) {
         let currentTask = taskList[i];
         let $row = $(`<tr data-id="${currentTask.id}">`);
-        $row.append(`<td><input type="checkbox" id="markComplete"</input></td>`);
+        if(currentTask.status == 'Incomplete'){
+            $row.append(`<td><input type="checkbox" id="markComplete"</input></td>`);
+        } else {
+            $row.append(`<td></td>`);
+        }
         $row.append(`<td>${currentTask.name}</td>`);
         $row.append(`<td>${currentTask.status}</td>`);
         $row.append(`<td><button id="deleteTask">Delete</button></td>`);
@@ -63,3 +73,16 @@ function deleteTask() {
         success: getTasks     
     }) //end delete
 } //end deleteTask
+
+//Mark task complete
+function markComplete (id) {
+    //ajax put to update status
+    let newStatus = 'Complete';
+    console.log('id to complete: ', id);
+    $.ajax({
+        method: 'PUT',
+        url: '/tasks/' + id,
+        data: {newStatus: newStatus},
+        success: getTasks
+    }); //end PUT
+} // end markComplete
