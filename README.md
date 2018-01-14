@@ -12,11 +12,11 @@
 
 ### Client
 - [x] Set up getTasks function w/ ajax get request to server (url: /tasks)
-- [ ] Append all tasks to DOM -- use backticks to avoid concatenating
+- [x] Append all tasks to DOM -- use backticks to avoid concatenating
 - [x] Create event listener for add task button
 - [x] Store new task in an object to send to server
 - [x] AJAX post new task to server (url: /tasks)
-- [ ] call getTasks in post success function to update tasks on DOM
+- [x] call getTasks in post success function to update tasks on DOM
 
 ### Server
 - [x] Set up node, install express, jquery, body-parser, pg

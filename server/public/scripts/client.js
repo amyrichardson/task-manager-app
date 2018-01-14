@@ -26,9 +26,7 @@ function sendTask (newTask) {
         method: 'POST',
         url: '/tasks',
         data: newTask,
-        success: function(response) {
-            console.log('back from server with: ', response);
-        } //end success
+        success: getTasks
     }); //end ajax POST
 } //end sendTask
 
@@ -37,8 +35,26 @@ function getTasks () {
     $.ajax({
         method: 'GET',
         url: '/tasks',
-        success: function(response) {
-            console.log('back from get to server with: ', response); 
-        } //end success
+        success: displayTasks
     }); //end ajax GET
 } //end getTasks
+
+//Append tasks to DOM 
+function displayTasks (taskList) {
+   for (let i = 0; i < taskList.length; i++) {
+    let currentTask = taskList[i];
+    let $row = $('<tr>');
+    $row.append(`<td><input type="checkbox" class="markComplete"</input></td>`);
+    $row.append(`<td>${currentTask.name}</td>`);
+    $row.append(`<td>${currentTask.status}</td>`);
+    $row.append(`<td><button class="deleteTask">Delete</button></td>`);
+    $row.append(`<td><button class="editTask">Edit</button></td>`);
+    $('#taskTable').append($row);
+    }
+   
+
+
+
+
+
+}
