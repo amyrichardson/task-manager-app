@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Task Manager</title>
-    <script src="vendors/jquery-3.2.1.min.js"></script>
+    <script src="vendors/jquery.min.js"></script>
     <script src="scripts/client.js"></script>
     <link rel="stylesheet" href="styles/main.css">
 </head>
@@ -11,16 +11,14 @@
     <div class="container">
         <header>
             <h1>Task Manager</h1>
-            <button id="addTask">Add Task</button>
         </header>
-        <div>
-            <form class="newTaskForm">
+        <div class="newTaskForm">
+            <form>
                 <h2>New Task</h2>
                 <p>[ task ]</p><input type="text" id="taskNameIn">
-                <p>[ due date ]</p><input type="date" id="taskDueDateIn">
-                <button id="submitTask">Submit Task</button>
+                <button id="addTask">Add Task</button>
             </form>
-        </div>
+        </div>  
         <div class="taskList">
             <h1>Tasks: </h1>
             <table>
