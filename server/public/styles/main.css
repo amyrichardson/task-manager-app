@@ -1,8 +1,9 @@
 html, body {
-    background-color: lightgrey;
+    background-color: #ECEBF0;
     margin: 0;
     padding: 0;
-    font-family: sans-serif;
+    font-family: 'Open Sans', sans-serif;
+    color: #484A47;
 }
 
 .container {
@@ -13,7 +14,8 @@ html, body {
 
 header {
     text-align: center;
-    background-color: lightcoral;
+    background-color: #687D77;
+    color: #ECEBF0;
     width: 100%;
     padding: 10px;
 }
@@ -21,17 +23,28 @@ header {
 .newTaskForm {
     display: flex;
     flex-direction: column;
-    background-color: lightblue;
+    background-color: rgba(72, 74, 71, 0.75);
     align-items: center;
+    text-align: center;
     padding: 20px 150px;
+    margin-top: 20px;
+    border: 3px solid #C1CE96;
+    border-radius: 10px;
 }
 
-input {
+#taskNameIn {
     width: 100%;
     padding: 10px;
-    
-    text-align: center;
+    margin: 10px;
     font-size: 12pt;
+    border: 0;
+    outline: 0;
+}
+
+button {
+    padding: 10px;
+    margin: 0 auto;
+    border: 0;
 }
 
 p {
@@ -39,10 +52,51 @@ p {
     font-size: 10pt;
 }
 
-.taskList {
-    text-align: center;
+td {
+    padding: 20px;
+    margin: 0px;
+    border-bottom: 1px dashed #484A47;
 }
 
-th, td {
-    padding: 20px;
+tr {
+    cursor: pointer;
+}
+
+tr:hover {
+    color: #ECEBF0;
+}
+
+.taskList {
+    text-align: center;
+    background-color: #C1CE96;
+    margin-top: 30px;
+    padding: 20px 100px;
+    border: 3px solid #687D77;
+    border-radius: 10px;
+}
+
+#addTask {
+    font-size: 24pt;
+    padding: 0px 10px;
+    background-color: #687D77;
+    color: #C1CE96;
+    outline: 0;
+    cursor: pointer;
+}
+
+#markComplete {
+    padding: 10px;
+}
+
+.completeTask {
+    color: rgba(72, 74, 71, 0.75);
+    text-decoration: line-through;
+}
+
+#deleteTask {
+    padding: 10px;
+    background-color: #C1CE96;
+    color: #484A47;
+    font-size: 14pt;
+    cursor: pointer;
 }

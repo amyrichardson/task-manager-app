@@ -4,14 +4,37 @@ $(document).ready(onReady);
         
 function onReady () {
 console.log('jq');
-$('#addTask').on('click', createTask);
+$('.newTaskForm').hide();
+$('#addTask').on('click', function(){
+    $('.newTaskForm').show();
+}) //end show form
+$('#exitForm').on('click', function(){
+    $('.newTaskForm').hide();
+})
+$('#submitTask').on('click', createTask);
 $('#taskTable').on('click', '#deleteTask', deleteTask);
 $('#taskTable').on('change', '#markComplete', function(){
     if(this.checked) {
         let id = $(this).closest('tr').data('id');
-        markComplete(id);
+        if($(this).closest('tr').data('status') == 'Complete'){
+            let incompleteStatus = 'Incomplete';
+            toggleStatus(id, incompleteStatus)
+        } else{
+            let completeStatus = 'Complete';
+            toggleStatus(id, completeStatus);
+        }
     }
 })
+$('#taskTable').on('click', 'tr', function() {
+    let id = $(this).data('id');
+    if($(this).data('status') == 'Complete'){
+        let incompleteStatus = 'Incomplete';
+        toggleStatus(id, incompleteStatus);    
+    } else{
+        let completeStatus = 'Complete';
+        toggleStatus(id, completeStatus);    
+    }
+});
 getTasks();
 } //end onReady
 
@@ -51,16 +74,20 @@ function displayTasks (taskList) {
     $('#taskTable').empty();
     for (let i = 0; i < taskList.length; i++) {
         let currentTask = taskList[i];
-        let $row = $(`<tr data-id="${currentTask.id}">`);
+        let $row = $(`<tr data-id="${currentTask.id}" data-status="${currentTask.status}">`);
         if(currentTask.status == 'Incomplete'){
             $row.append(`<td><input type="checkbox" id="markComplete"</input></td>`);
         } else {
             $row.append(`<td></td>`);
-        }
+        } //adds checkbox to incomplete tasks
         $row.append(`<td>${currentTask.name}</td>`);
         $row.append(`<td>${currentTask.status}</td>`);
-        $row.append(`<td><button id="deleteTask">Delete</button></td>`);
+        $row.append(`<td><button id="deleteTask"><i class="far fa-trash-alt"></i></button></td>`);
+        if(currentTask.status == 'Complete') {
+            $row.addClass('completeTask');
+        } //adds unique styles to complete tasks
         $('#taskTable').append($row);
+        
     } //end for loop
 } // end displayTasks
 
@@ -75,10 +102,8 @@ function deleteTask() {
 } //end deleteTask
 
 //Mark task complete
-function markComplete (id) {
+function toggleStatus (id, newStatus) {
     //ajax put to update status
-    let newStatus = 'Complete';
-    console.log('id to complete: ', id);
     $.ajax({
         method: 'PUT',
         url: '/tasks/' + id,
