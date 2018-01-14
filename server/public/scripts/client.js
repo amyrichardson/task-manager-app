@@ -5,6 +5,7 @@ $(document).ready(onReady);
 function onReady () {
 console.log('jq');
 $('#addTask').on('click', createTask);
+$('#taskTable').on('click', '#deleteTask', deleteTask);
 getTasks();
 } //end onReady
 
@@ -41,20 +42,24 @@ function getTasks () {
 
 //Append tasks to DOM 
 function displayTasks (taskList) {
-   for (let i = 0; i < taskList.length; i++) {
-    let currentTask = taskList[i];
-    let $row = $('<tr>');
-    $row.append(`<td><input type="checkbox" class="markComplete"</input></td>`);
-    $row.append(`<td>${currentTask.name}</td>`);
-    $row.append(`<td>${currentTask.status}</td>`);
-    $row.append(`<td><button class="deleteTask">Delete</button></td>`);
-    $row.append(`<td><button class="editTask">Edit</button></td>`);
-    $('#taskTable').append($row);
-    }
-   
+    $('#taskTable').empty();
+    for (let i = 0; i < taskList.length; i++) {
+        let currentTask = taskList[i];
+        let $row = $(`<tr data-id="${currentTask.id}">`);
+        $row.append(`<td><input type="checkbox" id="markComplete"</input></td>`);
+        $row.append(`<td>${currentTask.name}</td>`);
+        $row.append(`<td>${currentTask.status}</td>`);
+        $row.append(`<td><button id="deleteTask">Delete</button></td>`);
+        $('#taskTable').append($row);
+    } //end for loop
+} // end displayTasks
 
-
-
-
-
-}
+// Delete task
+function deleteTask() {
+    let id = $(this).closest('tr').data('id');
+    $.ajax({
+        method: 'DELETE',
+        url: '/tasks/' + id,
+        success: getTasks     
+    }) //end delete
+} //end deleteTask
