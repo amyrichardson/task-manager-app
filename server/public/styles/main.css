@@ -32,7 +32,11 @@ header {
     border-radius: 10px;
 }
 
-#taskNameIn {
+label {
+    color: #ECEBF0;
+}
+
+input {
     width: 100%;
     padding: 10px;
     margin: 10px;
@@ -99,4 +103,9 @@ tr:hover {
     color: #484A47;
     font-size: 14pt;
     cursor: pointer;
+}
+
+.overdueTask {
+    color: darkred;
+    font-weight: bold;
 }

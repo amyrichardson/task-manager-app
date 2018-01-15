@@ -100,10 +100,17 @@ function displayTasks (taskList) {
         if(currentTask.status == 'Complete') {
             $row.addClass('completeTask');
             $('#completeTasks').append($row);
-        } else {
+        }
+        if(currentTask.status == 'Incomplete'){
+            if(isDeadlinePassed(date) == true){
+                $row.addClass('overdueTask');
+            }
             $('#incompleteTasks').append($row);
-        } 
+        }
+
     } //end for loop
+   
+    
 } // end displayTasks
 
 // Delete task
@@ -126,3 +133,19 @@ function toggleStatus (id, newStatus) {
         success: getTasks
     }); //end PUT
 } // end markComplete
+
+function isDeadlinePassed (date) {
+    let today = new Date();
+    date = date.split('/');
+    let year = date[2];
+    let month = date[0] - 1;
+    let day = date[1];
+    console.log('year, month, day: ', year, month, day);
+    
+    date = new Date(year, month, day);
+    if(today > date) {
+        return true;        
+    } else {
+        return false;
+    }
+}

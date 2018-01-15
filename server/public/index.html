@@ -14,14 +14,14 @@
         <header>
             <button id="addTask"><i class="far fa-plus-square"></i> Add Task</button>
         </header>
-        <div class="newTaskForm">
-            <form>
-                <input type="text" id="taskNameIn" placeholder="New Task">
-                <input type="date" id="dueDateIn">
+        <form class="newTaskForm">
+            <label>New Task</label><input type="text" id="taskNameIn" placeholder="What do you need to do?">
+            <label>Due Date</label><input type="date" id="dueDateIn">
+            <div>
                 <button id="submitTask">Submit</button>
                 <button id="exitForm">Cancel</button>
-            </form>
-        </div>  
+            </div>
+        </form>  
         <div class="taskList">
             <table id="taskTable">
                 <thead>
