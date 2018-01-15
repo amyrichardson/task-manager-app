@@ -14,13 +14,14 @@
 
 
         <header>
-            <button id="addTask"><i class="fa fa-plus-square" aria-hidden="true"></i>Add Task</button>
-            <button id="manageCategoriesButton">Manage Categories</button>
+            <button id="addTask" class="main-btn"><i class="fa fa-plus-square" aria-hidden="true"></i>Add Task</button>
+            <button id="manageCategoriesButton" class="main-btn">Manage Categories</button>
         </header>
 
 
 
         <form class="newTaskForm manage">
+            <div class="form-container">
             <label>New Task</label>
             <input type="text" id="taskNameIn" placeholder="What do you need to do?">
             <div class="selectCategory">
@@ -33,13 +34,14 @@
                 <label>Due Date</label><input type="date" id="dueDateIn">
             </div>
             <div>
-                <button id="submitTask">Submit</button>
-                <button id="exitForm">Cancel</button>
+                <button id="submitTask" class="main-btn">Submit</button>
+                <button id="exitForm" class="main-btn">Exit</button>
             </div>
+        </div>
         </form>
 
         <div class="manageCategories manage">
-            <button id="addCategory"><i class="fa fa-plus-square" aria-hidden="true"></i> Add Category</button>
+            <button id="addCategory" class="main-btn"><i class="fa fa-plus-square" aria-hidden="true"></i> Add Category</button>
             <table class="categoryTable">
                 <thead>
                     <tr>
@@ -52,6 +54,7 @@
 
                 </tbody>
             </table>
+            <button id="exitCategoryManager" class="main-btn">Exit</button>
         </div>
 
 

@@ -2,7 +2,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
-const PORT = 5400;
+const PORT = process.env.PORT || 5400;
 
 //Bring in static files/body parser
 app.use(express.static('./server/public'));

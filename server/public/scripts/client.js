@@ -14,6 +14,7 @@ $('#manageCategoriesButton').on('click', function(){
     $('.manageCategories').show();
 })
 $('#exitForm').on('click', function(){
+    event.preventDefault();
     $('.newTaskForm').hide();
 })
 $('#submitTask').on('click', createTask);

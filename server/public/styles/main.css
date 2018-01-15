@@ -16,7 +16,7 @@ header {
     background-color: #687D77;
     color: #ECEBF0;
     width: 100%;
-    padding: 10px;
+    padding: 20px;
 }
 
 .manage {
@@ -28,35 +28,17 @@ header {
     margin-top: 20px;
     border: 3px solid #C1CE96;
     border-radius: 10px;
-}
-
-.manageCategories {
     color: #ECEBF0;
 }
 
-label {
-    color: #ECEBF0;
-}
-
-.taskList > label {
-    color: #484A47;
-}
-
-input {
+#taskNameIn {
     width: 40%;
     padding: 10px;
     margin: 10px;
+    background-color: #ECEBF0;
     font-size: 12pt;
     border: 0;
-    outline: 0;
-}
-
-select {
-    padding: 10px;
-    margin: 10px;
-    font-size: 12pt;
-    border: 0;
-    outline: 0;
+    outline-color: #C1CE96;
 }
 
 button {
@@ -66,22 +48,17 @@ button {
     outline: 0;
 }
 
-p {
-    margin-bottom: 0px;
-    font-size: 10pt;
-}
-
 td, th {
     padding: 20px;
     margin: 0px;
     border-bottom: 1px dashed #484A47;
 }
 
-tr {
+td {
     cursor: pointer;
 }
 
-tr:hover {
+td:hover {
     color: #ECEBF0;
 }
 
@@ -117,7 +94,7 @@ table {
     margin: 0 auto;
 }
 
-header > button {
+.main-btn {
     font-size: 16pt;
     padding: 0px 10px;
     margin: 0px 20px;
@@ -127,22 +104,8 @@ header > button {
     cursor: pointer;
 }
 
-header > button:hover {
+.main-btn:hover {
     color: #ECEBF0;
-}
-
-#addCategory {
-    font-size: 16pt;
-    padding: 0px 10px;
-    margin: 0px 20px;
-    background-color: rgba(72, 74, 71, 0);
-    color: #C1CE96;
-    outline: 0;
-    cursor: pointer;
-}
-
-#markComplete {
-    padding: 10px;
 }
 
 .completeTask {
@@ -163,11 +126,28 @@ header > button:hover {
     font-weight: bold;
 }
 
+.manageCategories > button {
+    background-color: rgba(72, 74, 71, 0);
+    color: #C1CE96;
+}
+
+.form-container > div > button {
+    background-color: rgba(72, 74, 71, 0);
+    color: #C1CE96;
+}
+
 .categoryButton {
     padding: 10px;
-    margin: 0;
     background-color: rgba(72, 74, 71, 0);
     color: #C1CE96;
     font-size: 14pt;
     cursor: pointer;
+}
+
+/* DATE style */
+#dueDateIn {
+    font-size: 12pt;
+    margin: 10px;
+    background-color: #ECEBF0;
+    color: #484A47;
 }
