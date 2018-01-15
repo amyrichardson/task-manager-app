@@ -36,5 +36,7 @@
 - [x] Add category table and allow users to select a category when adding a task (will require joins)
 - [x] Add a due date
 - [ ] Allow user to edit task name
-- [ ] Allow users to sort list by category
-
+- [x] Allow users to sort list by category
+- [ ] Tasks due today styled differently
+- [ ] Display today's date on DOM
+- [ ] Add "N/A" category to database and link to the Select option on DOM

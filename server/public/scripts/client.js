@@ -1,4 +1,5 @@
 console.log('js');
+let today = new Date();
 
 $(document).ready(onReady);
         
@@ -35,6 +36,8 @@ $('#taskTable').on('click', 'tr', function() {
         toggleStatus(id, completeStatus);    
     }
 });
+$('#filterCategory').change(getTasksByCategory);
+getCategories();
 getTasks();
 } //end onReady
 
@@ -71,10 +74,35 @@ function getTasks () {
     }); //end ajax GET
 } //end getTasks
 
+//gets all categories from database
+function getCategories () {
+    $.ajax({
+        method: 'GET',
+        url: '/tasks/categories',
+        success: addCategories
+    }); //end ajax GET
+}
+
+//adds categories to select boxes w/ their id's 
+function addCategories (categories) {
+ console.log('adding categories', categories );
+ $('#categoryIn').empty();
+ $('#filterCategory').empty();    
+ $('#categoryIn').html('<option value="None">(Select)</option>');
+ $('#filterCategory').html('<option value="None">(Select)</option>');
+
+ for (let i = 0; i < categories.length; i++) {
+    let category = categories[i]; 
+    $('#categoryIn').append(`<option data-id="${category.id}" value="${category.category_name}">${category.category_name}</option>`);
+    $('#filterCategory').append(`<option data-id="${category.id}" value="${category.category_name}">${category.category_name}</option>`);
+ }
+}
+
 //Append tasks to DOM 
 function displayTasks (taskList) {
     $('#incompleteTasks').empty();
     $('#completeTasks').empty();
+    console.log('Task list: ', taskList);
     for (let i = 0; i < taskList.length; i++) {
         let currentTask = taskList[i];
         let $row = $(`<tr data-id="${currentTask.id}" data-status="${currentTask.status}">`);
@@ -135,15 +163,33 @@ function toggleStatus (id, newStatus) {
 } // end markComplete
 
 function isDeadlinePassed (date) {
-    let today = new Date();
     date = date.split('/');
     let year = date[2];
     let month = date[0] - 1;
     let day = date[1];    
     date = new Date(year, month, day);
+    // let a = new Date(2018, 01, 16);
+    // console.log(a.toISOString());
+    
+ 
+    console.log('today', today);
+    console.log('date: ', date);
+    
+    
     if(today > date) {
         return true;        
     } else {
         return false;
     }
 }
+
+function getTasksByCategory () {
+    let categoryId = $('#filterCategory option:selected').data('id');
+    console.log('category to filter to: ', categoryId);
+    
+    $.ajax({
+        method: 'GET',
+        url: '/tasks/' + categoryId,
+        success: displayTasks
+    }); //end ajax GET
+} //end getTasks

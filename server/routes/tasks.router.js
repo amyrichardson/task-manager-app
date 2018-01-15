@@ -18,6 +18,38 @@ router.get('/', (req, res) => {
         }) //end catch
 }) //end get
 
+// GET categories from database
+router.get('/categories', (req, res) => {
+    const queryText = `SELECT * FROM categories`
+    pool.query(queryText)
+        .then((result) => {
+            res.send(result.rows);
+        }) //end then
+        .catch((err) => {
+            res.sendStatus(500);
+        })
+    })
+
+//GET tasks by category
+router.get('/:categoryId', (req, res) => {
+    console.log('in select by category');
+    console.log(req.params.categoryId);
+    
+    const queryText = `SELECT tasks.id, tasks.name, tasks.status, tasks.due_date, categories.category_name FROM tasks
+    JOIN tasks_categories ON tasks_categories.task_id = tasks.id
+    JOIN categories ON tasks_categories.category_id = categories.id
+    WHERE tasks_categories.category_id = $1
+    ORDER BY tasks.due_date`
+    pool.query(queryText, [req.params.categoryId])
+        .then((result) => {            
+            res.send(result.rows);
+        }) //end then
+        .catch((err) => {
+            res.sendStatus(500);
+        }) //end catch
+}) //end get
+
+
 //POST, receiving new task from client
 router.post('/', (req, res) => {
     const taskQuery = 'INSERT INTO tasks (name, due_date) VALUES ($1, $2) RETURNING id';
