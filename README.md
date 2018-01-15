@@ -37,6 +37,9 @@
 - [x] Add a due date
 - [ ] Allow user to edit task name
 - [x] Allow users to sort list by category
+- [x] Allow users to add a category
 - [ ] Tasks due today styled differently
 - [ ] Display today's date on DOM
 - [ ] Add "N/A" category to database and link to the Select option on DOM
+- [ ] More styles
+

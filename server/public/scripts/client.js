@@ -6,6 +6,7 @@ $(document).ready(onReady);
 function onReady () {
 console.log('jq');
 $('.newTaskForm').hide();
+$('.newCategoryForm').hide();
 $('#addTask').on('click', function(){
     $('.newTaskForm').show();
 }) //end show form
@@ -37,6 +38,17 @@ $('#taskTable').on('click', 'tr', function() {
     }
 });
 $('#filterCategory').change(getTasksByCategory);
+$('#newCategory').on('click', function(){
+    event.preventDefault();
+    $('.selectCategory').hide();
+    $('.newCategoryForm').show();
+    $('#addCategory').on('click', function(){
+        event.preventDefault();
+        let categoryToAdd = $('#newCategoryIn').val();
+        console.log('category to add: ', categoryToAdd);
+        newCategory(categoryToAdd);
+    })
+})
 getCategories();
 getTasks();
 } //end onReady
@@ -47,9 +59,10 @@ function createTask (event) {
     event.preventDefault();
     let newTask = {
         taskName: $('#taskNameIn').val(),
-        category: $('#categoryIn').val(),
-        dueDate: $('#dueDateIn').val()
+        dueDate: $('#dueDateIn').val(),
+        category: $('#categoryIn').val()
     };
+
     sendTask(newTask);
 } //end createTask
 
@@ -193,3 +206,16 @@ function getTasksByCategory () {
         success: displayTasks
     }); //end ajax GET
 } //end getTasks
+
+function newCategory (categoryName){
+    $.ajax({
+        method: 'POST',
+        url: '/tasks/categories',
+        data: {categoryName: categoryName},
+        success: function(response){
+            getCategories(response);
+            $('.newCategoryForm').hide();
+            $('.selectCategory').show();
+        }
+    });
+}

@@ -72,6 +72,19 @@ router.post('/', (req, res) => {
         }) //end catch
 }); //end post
 
+router.post('/categories', (req, res) => {
+    console.log('in new category:', req.body.categoryName);
+    
+    const queryText = 'INSERT INTO categories (category_name) VALUES ($1)'
+    pool.query(queryText, [req.body.categoryName])
+        .then((result) => {
+            res.sendStatus(201);
+        })
+        .catch((err) => {
+            res.sendStatus(500);
+        })
+})
+
 // DELETE, receiving task id from client to delete
 router.delete('/:id', (req, res) => {
     const queryText = 'DELETE FROM tasks_categories WHERE task_id = $1';
