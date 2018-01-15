@@ -46,3 +46,4 @@
 - [ ] Add separate categories router
 - [ ] Get add category working
 - [ ] Get edit category working
+- [ ] Add date completed

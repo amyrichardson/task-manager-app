@@ -17,7 +17,7 @@ $('#exitForm').on('click', function(){
     $('.newTaskForm').hide();
 })
 $('#submitTask').on('click', createTask);
-$('#taskTable').on('click', '#deleteTask', deleteTask);
+$('#taskTable').on('click', '.deleteTask', deleteTask);
 $('#taskTable').on('change', '#markComplete', function(){
     if(this.checked) {
         let id = $(this).closest('tr').data('id');
@@ -30,9 +30,9 @@ $('#taskTable').on('change', '#markComplete', function(){
         }
     }
 })
-$('#taskTable').on('click', 'tr', function() {
-    let id = $(this).data('id');
-    if($(this).data('status') == 'Complete'){
+$('#taskTable').on('click', '.toggleStatus', function() {
+    let id = $(this).closest('tr').data('id');
+    if($(this).closest('tr').data('status') == 'Complete'){
         let incompleteStatus = 'Incomplete';
         toggleStatus(id, incompleteStatus);    
     } else{
@@ -96,11 +96,10 @@ function getCategories () {
 
 //adds categories to select boxes w/ their id's 
 function addCategories (categories) {
- console.log('adding categories', categories );
  $('#categoryIn').empty();
  $('#filterCategory').empty();    
  $('#categoryIn').html('<option value="None">(Select)</option>');
- $('#filterCategory').html('<option value="None">(Select)</option>');
+ $('#filterCategory').html('<option value="All">All tasks</option>');
 
  for (let i = 0; i < categories.length; i++) {
     let category = categories[i]; 
@@ -118,7 +117,6 @@ function addCategories (categories) {
 function displayTasks (taskList) {
     $('#incompleteTasks').empty();
     $('#completeTasks').empty();
-    console.log('Task list: ', taskList);
     for (let i = 0; i < taskList.length; i++) {
         let currentTask = taskList[i];
         let $row = $(`<tr data-id="${currentTask.id}" data-status="${currentTask.status}">`);
@@ -131,10 +129,10 @@ function displayTasks (taskList) {
         else {
             date = 'Unknown';
         } //end date is null
-        $row.append(`<td>${currentTask.name}</td>`);
-        $row.append(`<td>${currentTask.category_name}</td>`)
-        $row.append(`<td>${date}</td>`);
-        $($row).append(`<td><button class="editTask taskButton"><i class="fa fa-pencil"</i></button></td>`)
+        $row.append(`<td class="toggleStatus">${currentTask.name}</td>`);
+        $row.append(`<td class="toggleStatus">${currentTask.category_name}</td>`)
+        $row.append(`<td class="toggleStatus">${date}</td></tr>`);
+        $row.append(`<td><button class="editTask taskButton"><i class="fa fa-pencil"</i></button></td>`)
         $row.append(`<td><button class="deleteTask taskButton"><i class="fa fa-trash" aria-hidden="true"></i>
         </button></td>`);
         if(currentTask.status == 'Complete') {
@@ -154,8 +152,8 @@ function displayTasks (taskList) {
 } // end displayTasks
 
 // Delete task
-function deleteTask() {
-    let id = $(this).closest('tr').data('id');
+function deleteTask() {    
+    let id = $(this).closest('tr').data('id');    
     $.ajax({
         method: 'DELETE',
         url: '/tasks/' + id,
@@ -196,14 +194,16 @@ function isDeadlinePassed (date) {
 }
 
 function getTasksByCategory () {
-    let categoryId = $('#filterCategory option:selected').data('id');
-    console.log('category to filter to: ', categoryId);
-    
-    $.ajax({
-        method: 'GET',
-        url: '/tasks/' + categoryId,
-        success: displayTasks
-    }); //end ajax GET
+    if($('#filterCategory option:selected').val() == 'All'){
+        getTasks();
+    } else{
+        let categoryId = $('#filterCategory option:selected').data('id');
+        $.ajax({
+                method: 'GET',
+                url: '/tasks/' + categoryId,
+                success: displayTasks
+        }); //end ajax GET
+    }    
 } //end getTasks
 
 function newCategory (){
