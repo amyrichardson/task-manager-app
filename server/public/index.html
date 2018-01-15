@@ -16,6 +16,14 @@
         </header>
         <form class="newTaskForm">
             <label>New Task</label><input type="text" id="taskNameIn" placeholder="What do you need to do?">
+            <label>Category</label><select id="categoryIn">
+                <option value="None">(Select)</option>
+                <option value="Chores">Chores</option>
+                <option value="School">School</option>
+                <option value="Personal">Personal</option>
+                <option value="Work">Work</option>
+                <option value="Financial">Financial</option>
+            </select>
             <label>Due Date</label><input type="date" id="dueDateIn">
             <div>
                 <button id="submitTask">Submit</button>
@@ -28,6 +36,7 @@
                     <tr>
                         <th></th>
                         <th>Name</th>
+                        <th>Category</th>
                         <th>Status</th>
                         <th>Due Date</th>
                     </tr>

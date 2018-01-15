@@ -42,17 +42,16 @@ getTasks();
 // Packages user input into a new task object
 function createTask (event) {
     event.preventDefault();
-    console.log('new task added');
     let newTask = {
         taskName: $('#taskNameIn').val(),
+        category: $('#categoryIn').val(),
         dueDate: $('#dueDateIn').val()
     };
-    console.log('new task: ', newTask);
     sendTask(newTask);
 } //end createTask
 
 // Sends new task object to server w/ ajax POST
-function sendTask (newTask) {
+function sendTask (newTask) {    
     $.ajax({
         method: 'POST',
         url: '/tasks',
@@ -94,6 +93,7 @@ function displayTasks (taskList) {
             date = 'Unknown';
         } //end date is null
         $row.append(`<td>${currentTask.name}</td>`);
+        $row.append(`<td>${currentTask.category_name}</td>`)
         $row.append(`<td>${currentTask.status}</td>`);
         $row.append(`<td>${date}</td>`);
         $row.append(`<td><button id="deleteTask"><i class="far fa-trash-alt"></i></button></td>`);
@@ -139,9 +139,7 @@ function isDeadlinePassed (date) {
     date = date.split('/');
     let year = date[2];
     let month = date[0] - 1;
-    let day = date[1];
-    console.log('year, month, day: ', year, month, day);
-    
+    let day = date[1];    
     date = new Date(year, month, day);
     if(today > date) {
         return true;        
