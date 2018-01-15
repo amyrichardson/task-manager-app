@@ -13,15 +13,14 @@ html, body {
 }
 
 header {
-    text-align: center;
     background-color: #687D77;
     color: #ECEBF0;
     width: 100%;
     padding: 10px;
 }
 
-.newTaskForm {
-    width: 80%;
+.manage {
+    width: 60%;
     background-color: rgba(72, 74, 71, 0.75);
     align-items: center;
     text-align: center;
@@ -31,8 +30,16 @@ header {
     border-radius: 10px;
 }
 
+.manageCategories {
+    color: #ECEBF0;
+}
+
 label {
     color: #ECEBF0;
+}
+
+.taskList > label {
+    color: #484A47;
 }
 
 input {
@@ -56,6 +63,7 @@ button {
     padding: 10px;
     margin: 0 auto;
     border: 0;
+    outline: 0;
 }
 
 p {
@@ -63,7 +71,7 @@ p {
     font-size: 10pt;
 }
 
-td {
+td, th {
     padding: 20px;
     margin: 0px;
     border-bottom: 1px dashed #484A47;
@@ -78,7 +86,7 @@ tr:hover {
 }
 
 .taskList {
-    text-align: center;
+    width: 75%;
     background-color: #C1CE96;
     margin-top: 30px;
     padding: 20px 100px;
@@ -86,10 +94,29 @@ tr:hover {
     border-radius: 10px;
 }
 
-#addTask {
-    font-size: 24pt;
+table {
+    margin: 0 auto;
+}
+
+header > button {
+    font-size: 16pt;
     padding: 0px 10px;
+    margin: 0px 20px;
     background-color: #687D77;
+    color: #C1CE96;
+    outline: 0;
+    cursor: pointer;
+}
+
+header > button:hover {
+    color: #ECEBF0;
+}
+
+#addCategory {
+    font-size: 16pt;
+    padding: 0px 10px;
+    margin: 0px 20px;
+    background-color: rgba(72, 74, 71, 0);
     color: #C1CE96;
     outline: 0;
     cursor: pointer;
@@ -104,7 +131,7 @@ tr:hover {
     text-decoration: line-through;
 }
 
-#deleteTask {
+.taskButton {
     padding: 10px;
     background-color: #C1CE96;
     color: #484A47;
@@ -115,4 +142,13 @@ tr:hover {
 .overdueTask {
     color: darkred;
     font-weight: bold;
+}
+
+.categoryButton {
+    padding: 10px;
+    margin: 0;
+    background-color: rgba(72, 74, 71, 0);
+    color: #C1CE96;
+    font-size: 14pt;
+    cursor: pointer;
 }

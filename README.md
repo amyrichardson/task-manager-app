@@ -41,5 +41,8 @@
 - [ ] Tasks due today styled differently
 - [ ] Display today's date on DOM
 - [ ] Add "N/A" category to database and link to the Select option on DOM
-- [ ] More styles
-
+- [ ] Style buttons, inputs, and dropdowns
+- [x] Add separate category div
+- [ ] Add separate categories router
+- [ ] Get add category working
+- [ ] Get edit category working

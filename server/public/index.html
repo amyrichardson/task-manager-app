@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Task Manager</title>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.4/js/all.js"></script>
+    <link rel="stylesheet" href="fonts/font-awesome/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <script src="vendors/jquery.min.js"></script>
     <script src="scripts/client.js"></script>
@@ -11,10 +11,16 @@
 </head>
 <body>
     <div class="container">
+
+
         <header>
-            <button id="addTask"><i class="far fa-plus-square"></i> Add Task</button>
+            <button id="addTask"><i class="fa fa-plus-square" aria-hidden="true"></i>Add Task</button>
+            <button id="manageCategoriesButton">Manage Categories</button>
         </header>
-        <form class="newTaskForm">
+
+
+
+        <form class="newTaskForm manage">
             <label>New Task</label>
             <input type="text" id="taskNameIn" placeholder="What do you need to do?">
             <div class="selectCategory">
@@ -22,18 +28,33 @@
                 <select id="categoryIn">
                 <option value="None">(Select)</option>
             </select>
-            <button id="newCategory">New Category</button>
             </div>
-            <div class="newCategoryForm">
-                <label>New Category</label><input type="text" id="newCategoryIn" placeholder=""></input>
-                <button id="addCategory">Add</button>
-           </div>
-            <br><label>Due Date</label><input type="date" id="dueDateIn">
+            <div>
+                <label>Due Date</label><input type="date" id="dueDateIn">
+            </div>
             <div>
                 <button id="submitTask">Submit</button>
                 <button id="exitForm">Cancel</button>
             </div>
-        </form>  
+        </form>
+
+        <div class="manageCategories manage">
+            <button id="addCategory"><i class="fa fa-plus-square" aria-hidden="true"></i> Add Category</button>
+            <table class="categoryTable">
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody class="categoryList">
+
+                </tbody>
+            </table>
+        </div>
+
+
         <div class="taskList">
             <label>Filter </label>
             <select id="filterCategory">
@@ -42,11 +63,11 @@
             <table id="taskTable">
                 <thead>
                     <tr>
-                        <th></th>
                         <th>Name</th>
                         <th>Category</th>
-                        <th>Status</th>
                         <th>Due Date</th>
+                        <th></th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody id="incompleteTasks">

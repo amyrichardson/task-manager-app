@@ -6,10 +6,13 @@ $(document).ready(onReady);
 function onReady () {
 console.log('jq');
 $('.newTaskForm').hide();
-$('.newCategoryForm').hide();
+$('.manageCategories').hide();
 $('#addTask').on('click', function(){
     $('.newTaskForm').show();
 }) //end show form
+$('#manageCategoriesButton').on('click', function(){
+    $('.manageCategories').show();
+})
 $('#exitForm').on('click', function(){
     $('.newTaskForm').hide();
 })
@@ -42,13 +45,8 @@ $('#newCategory').on('click', function(){
     event.preventDefault();
     $('.selectCategory').hide();
     $('.newCategoryForm').show();
-    $('#addCategory').on('click', function(){
-        event.preventDefault();
-        let categoryToAdd = $('#newCategoryIn').val();
-        console.log('category to add: ', categoryToAdd);
-        newCategory(categoryToAdd);
-    })
-})
+    $('#addCategory').on('click', newCategory);
+});
 getCategories();
 getTasks();
 } //end onReady
@@ -108,6 +106,11 @@ function addCategories (categories) {
     let category = categories[i]; 
     $('#categoryIn').append(`<option data-id="${category.id}" value="${category.category_name}">${category.category_name}</option>`);
     $('#filterCategory').append(`<option data-id="${category.id}" value="${category.category_name}">${category.category_name}</option>`);
+   let $row = $('<tr>')
+    $($row).append(`<td>${category.category_name}</td>`)
+    $($row).append(`<td><button class="categoryButton"><i class="fa fa-pencil"</i></button></td>`)
+    $($row).append(`<td><button class="categoryButton"><i class="fa fa-trash" aria-hidden="true"></i></button></td>`)
+    $('.categoryList').append($row);
  }
 }
 
@@ -119,11 +122,6 @@ function displayTasks (taskList) {
     for (let i = 0; i < taskList.length; i++) {
         let currentTask = taskList[i];
         let $row = $(`<tr data-id="${currentTask.id}" data-status="${currentTask.status}">`);
-        if(currentTask.status == 'Incomplete'){
-            $row.append(`<td><input type="checkbox" id="markComplete"</input></td>`);
-        } else {
-            $row.append(`<td></td>`);
-        } //adds checkbox to incomplete tasks
         let date = currentTask.due_date;
         if(date != null){
             date = date.split('T')[0];
@@ -135,9 +133,10 @@ function displayTasks (taskList) {
         } //end date is null
         $row.append(`<td>${currentTask.name}</td>`);
         $row.append(`<td>${currentTask.category_name}</td>`)
-        $row.append(`<td>${currentTask.status}</td>`);
         $row.append(`<td>${date}</td>`);
-        $row.append(`<td><button id="deleteTask"><i class="far fa-trash-alt"></i></button></td>`);
+        $($row).append(`<td><button class="editTask taskButton"><i class="fa fa-pencil"</i></button></td>`)
+        $row.append(`<td><button class="deleteTask taskButton"><i class="fa fa-trash" aria-hidden="true"></i>
+        </button></td>`);
         if(currentTask.status == 'Complete') {
             $row.addClass('completeTask');
             $('#completeTasks').append($row);
@@ -207,13 +206,17 @@ function getTasksByCategory () {
     }); //end ajax GET
 } //end getTasks
 
-function newCategory (categoryName){
+function newCategory (){
+    event.preventDefault();
+        let categoryToAdd = $('#newCategoryIn').val();
+        console.log('category to add: ', categoryToAdd);
     $.ajax({
         method: 'POST',
         url: '/tasks/categories',
-        data: {categoryName: categoryName},
+        data: {categoryName: categoryToAdd},
         success: function(response){
             getCategories(response);
+            $('#newCategoryIn').val('');
             $('.newCategoryForm').hide();
             $('.selectCategory').show();
         }
