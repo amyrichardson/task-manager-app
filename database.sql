@@ -4,13 +4,29 @@ CREATE TABLE tasks (
 	status VARCHAR (10) DEFAULT 'Incomplete'
 	);
 
-INSERT INTO tasks (name)
-VALUES ('Wash bedding');
-INSERT INTO tasks (name)
-VALUES ('Fold laundry');
-INSERT INTO tasks (name)
-VALUES ('Buy groceries');
-INSERT INTO tasks (name)
-VALUES ('Cook dinner');
-INSERT INTO tasks (name, status)
-VALUES ('Call Mom', 'Complete');
+ALTER TABLE tasks
+ADD due_date DATE; 
+CREATE TABLE categories (
+	id SERIAL PRIMARY KEY,
+	name VARCHAR(30)
+);
+
+CREATE TABLE tasks_categories (
+	id SERIAL PRIMARY KEY,
+	task_id INT REFERENCES tasks,
+	category_id INT REFERENCES categories
+	);
+	
+INSERT INTO categories (name)
+VALUES ('Chores');
+INSERT INTO categories (name)
+VALUES ('School');
+INSERT INTO categories (name)
+VALUES ('Personal');
+INSERT INTO categories (name)
+VALUES ('Work');
+INSERT INTO categories (name)
+VALUES ('Financial');
+
+
+

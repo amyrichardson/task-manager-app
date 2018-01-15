@@ -33,7 +33,8 @@
 - [x] Completed tasks have different CSS
 - [x] Clear input value once task is added
 - [x] Additional styling (make it look awesome, add an icon, better fonts)
-- [ ] Add category table and allow users to select a category when adding a task (will require joins)
+- [x] Add category table and allow users to select a category when adding a task (will require joins)
 - [x] Add a due date
 - [ ] Allow user to edit task name
+- [ ] Allow users to sort list by category
 
