@@ -17,12 +17,27 @@
         <div class="newTaskForm">
             <form>
                 <input type="text" id="taskNameIn" placeholder="New Task">
+                <input type="date" id="dueDateIn">
                 <button id="submitTask">Submit</button>
                 <button id="exitForm">Cancel</button>
             </form>
         </div>  
         <div class="taskList">
             <table id="taskTable">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Name</th>
+                        <th>Status</th>
+                        <th>Due Date</th>
+                    </tr>
+                </thead>
+                <tbody id="incompleteTasks">
+
+                </tbody>
+                <tbody id="completeTasks">
+
+                </tbody>
             </table>
         </div>
     </div>

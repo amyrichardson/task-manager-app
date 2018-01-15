@@ -5,7 +5,7 @@ const pool = require('../modules/pool');
 //Routes
 //GET, sending data back to client
 router.get('/', (req, res) => {
-    const queryText = 'SELECT * FROM tasks ORDER BY status DESC'
+    const queryText = 'SELECT * FROM tasks ORDER BY due_date'
     pool.query(queryText)
         .then((result) => {
             res.send(result.rows);
@@ -17,8 +17,8 @@ router.get('/', (req, res) => {
 
 //POST, receiving new task from client
 router.post('/', (req, res) => {
-    const queryText = 'INSERT INTO tasks (name) VALUES ($1)';
-    pool.query(queryText, [req.body.taskName])
+    const queryText = 'INSERT INTO tasks (name, due_date) VALUES ($1, $2)';
+    pool.query(queryText, [req.body.taskName, req.body.dueDate])
         .then((result) => {
             res.sendStatus(201);
         }) //end then

@@ -45,6 +45,7 @@ function createTask (event) {
     console.log('new task added');
     let newTask = {
         taskName: $('#taskNameIn').val(),
+        dueDate: $('#dueDateIn').val()
     };
     console.log('new task: ', newTask);
     sendTask(newTask);
@@ -73,7 +74,8 @@ function getTasks () {
 
 //Append tasks to DOM 
 function displayTasks (taskList) {
-    $('#taskTable').empty();
+    $('#incompleteTasks').empty();
+    $('#completeTasks').empty();
     for (let i = 0; i < taskList.length; i++) {
         let currentTask = taskList[i];
         let $row = $(`<tr data-id="${currentTask.id}" data-status="${currentTask.status}">`);
@@ -82,14 +84,25 @@ function displayTasks (taskList) {
         } else {
             $row.append(`<td></td>`);
         } //adds checkbox to incomplete tasks
+        let date = currentTask.due_date;
+        if(date != null){
+            date = date.split('T')[0];
+            date = date.split('-');
+            date = date[1] + '/' + date[2] + '/' + date[0];
+        } //end if date is not null 
+        else {
+            date = 'Unknown';
+        } //end date is null
         $row.append(`<td>${currentTask.name}</td>`);
         $row.append(`<td>${currentTask.status}</td>`);
+        $row.append(`<td>${date}</td>`);
         $row.append(`<td><button id="deleteTask"><i class="far fa-trash-alt"></i></button></td>`);
         if(currentTask.status == 'Complete') {
             $row.addClass('completeTask');
-        } //adds unique styles to complete tasks
-        $('#taskTable').append($row);
-        
+            $('#completeTasks').append($row);
+        } else {
+            $('#incompleteTasks').append($row);
+        } 
     } //end for loop
 } // end displayTasks
 
