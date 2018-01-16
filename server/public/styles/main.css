@@ -1,9 +1,10 @@
+/* Main Styles */
 html, body {
     background-color: #ECEBF0;
     margin: 0;
     padding: 0;
     font-family: 'Open Sans', sans-serif;
-    color: #484A47;
+    color: #3C3D3B;
 }
 
 .container {
@@ -21,46 +22,34 @@ header {
 
 .manage {
     width: 35%;
-    background-color: rgba(72, 74, 71, 0.75);
+    background-color: #B0B5AE;
     align-items: center;
     text-align: center;
     padding: 10px;
     margin-top: 20px;
-    border: 3px solid #C1CE96;
-    border-radius: 10px;
-    color: #ECEBF0;
+    border: 3px solid #687D77;
+    border-radius: 5px;
+    color: #3C3D3B;
 }
 
-#taskNameIn {
-    width: 40%;
-    padding: 10px;
-    margin: 10px;
-    background-color: #ECEBF0;
-    font-size: 12pt;
-    border: 0;
-    outline-color: #C1CE96;
-}
-
-#newCategoryIn {
-    width: 60%;
-    padding: 10px;
-    background-color: #ECEBF0;
-    font-size: 12pt;
-    border: 0;
-    outline-color: #C1CE96;
-}
-
-button {
-    padding: 10px;
+/* Table Styles */
+table {
     margin: 0 auto;
-    border: 0;
-    outline: 0;
+}
+
+.taskList {
+    width: 60%;
+    background-color: #B0B5AE;
+    margin: 30px 0px;
+    padding: 10px;
+    border: 3px solid #687D77;
+    border-radius: 5px;
 }
 
 td, th {
     padding: 10px;
     margin: 0px;
-    border-bottom: 1px dashed #484A47;
+    border-bottom: 1px dashed #353129;
 }
 
 td {
@@ -71,14 +60,66 @@ td:hover {
     color: #ECEBF0;
 }
 
-.taskList {
-    width: 60%;
-    background-color: #C1CE96;
-    margin: 30px 0px;
-    padding: 10px;
-    border: 3px solid #687D77;
-    border-radius: 10px;
+/* Task Styles */
+.completeTask {
+    color: rgba(72, 74, 71, 0.75);
+    text-decoration: line-through;
 }
+
+.overdueTask {
+    color: darkred;
+    font-weight: bold;
+}
+
+/* Button Styles */
+button {
+    padding: 10px;
+    margin: 0 auto;
+    border: 0;
+    outline: 0;
+}
+
+.main-btn {
+    font-size: 16pt;
+    padding: 0px 10px;
+    margin: 0px 20px;
+    background-color: #687D77;
+    color: #3C3D3B;
+    outline: 0;
+    cursor: pointer;
+}
+
+.main-btn:hover {
+    color: #ECEBF0;
+}
+
+.manageCategories > button {
+    background-color: rgba(72, 74, 71, 0);
+    color: #51615C;
+}
+
+.form-container > div > button {
+    background-color: rgba(72, 74, 71, 0);
+    color: #51615C;
+}
+
+.categoryButton {
+    padding: 10px;
+    background-color: rgba(72, 74, 71, 0);
+    color: #51615C;
+    font-size: 14pt;
+    cursor: pointer;
+}
+
+.taskButton {
+    padding: 10px;
+    background-color: #B0B5AE;
+    color: #51615C;
+    font-size: 14pt;
+    cursor: pointer;
+}
+
+/* Input styles */
 
 select {
     -webkit-appearance: none;
@@ -99,64 +140,28 @@ select {
     cursor: pointer;
 }
 
-table {
-    margin: 0 auto;
-}
-
-.main-btn {
-    font-size: 16pt;
-    padding: 0px 10px;
-    margin: 0px 20px;
-    background-color: #687D77;
-    color: #C1CE96;
-    outline: 0;
-    cursor: pointer;
-}
-
-.main-btn:hover {
-    color: #ECEBF0;
-}
-
-.completeTask {
-    color: rgba(72, 74, 71, 0.75);
-    text-decoration: line-through;
-}
-
-.taskButton {
-    padding: 10px;
-    background-color: #C1CE96;
-    color: #484A47;
-    font-size: 14pt;
-    cursor: pointer;
-}
-
-.overdueTask {
-    color: darkred;
-    font-weight: bold;
-}
-
-.manageCategories > button {
-    background-color: rgba(72, 74, 71, 0);
-    color: #C1CE96;
-}
-
-.form-container > div > button {
-    background-color: rgba(72, 74, 71, 0);
-    color: #C1CE96;
-}
-
-.categoryButton {
-    padding: 10px;
-    background-color: rgba(72, 74, 71, 0);
-    color: #C1CE96;
-    font-size: 14pt;
-    cursor: pointer;
-}
-
-/* DATE style */
 #dueDateIn {
     font-size: 12pt;
     margin: 10px;
     background-color: #ECEBF0;
-    color: #484A47;
+    color: #2F302E;
+}
+
+#taskNameIn {
+    width: 40%;
+    padding: 10px;
+    margin: 10px;
+    background-color: #ECEBF0;
+    font-size: 12pt;
+    border: 0;
+    outline-color: #687D77;
+}
+
+#newCategoryIn {
+    width: 60%;
+    padding: 10px;
+    background-color: #ECEBF0;
+    font-size: 12pt;
+    border: 0;
+    outline-color: #687D77;
 }
