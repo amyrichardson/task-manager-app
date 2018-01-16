@@ -21,15 +21,30 @@ header {
 }
 
 .manage {
-    width: 35%;
+    width: 50%;
+    height: 30%;   
+    display: table;
     background-color: #B0B5AE;
-    align-items: center;
-    text-align: center;
     padding: 10px;
-    margin-top: 20px;
     border: 3px solid #687D77;
     border-radius: 5px;
     color: #3C3D3B;
+    margin: auto;
+    overflow: auto;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    position: fixed;
+    z-index: 999;
+    box-shadow: 0px 0px 1px 5000px   rgba(88, 88, 88, 0.9);
+}
+
+.manage-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Table Styles */
@@ -73,7 +88,7 @@ td:hover {
 
 /* Button Styles */
 button {
-    padding: 10px;
+    padding: 0px;
     margin: 0 auto;
     border: 0;
     outline: 0;
@@ -84,22 +99,22 @@ button {
     padding: 0px 10px;
     margin: 0px 20px;
     background-color: #687D77;
-    color: #3C3D3B;
+    color: #ECEBF0;
     outline: 0;
     cursor: pointer;
 }
 
 .main-btn:hover {
-    color: #ECEBF0;
+    color: #353129;
 }
 
-.manageCategories > button {
-    background-color: rgba(72, 74, 71, 0);
+.manage-container > div > button {
+    background-color: #B0B5AE;
     color: #51615C;
 }
 
-.form-container > div > button {
-    background-color: rgba(72, 74, 71, 0);
+.manage-container > button {
+    background-color: #B0B5AE;
     color: #51615C;
 }
 
@@ -148,7 +163,7 @@ select {
 }
 
 #taskNameIn {
-    width: 40%;
+    width: 80%;
     padding: 10px;
     margin: 10px;
     background-color: #ECEBF0;
@@ -158,7 +173,7 @@ select {
 }
 
 #newCategoryIn {
-    width: 60%;
+    width: 50%;
     padding: 10px;
     background-color: #ECEBF0;
     font-size: 12pt;

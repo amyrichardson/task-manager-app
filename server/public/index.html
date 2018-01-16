@@ -15,44 +15,6 @@
             <button id="addTask" class="main-btn"><i class="fa fa-plus-square" aria-hidden="true"></i>Add Task</button>
             <button id="manageCategoriesButton" class="main-btn">Manage Categories</button>
         </header>
-        <form class="newTaskForm manage">
-            <div class="form-container">
-            <label>New Task</label>
-            <input type="text" id="taskNameIn" placeholder="What do you need to do?">
-            <div class="selectCategory">
-                <label>Category</label>
-                <select id="categoryIn">
-                <option value="None">(Select)</option>
-            </select>
-            </div>
-            <div>
-                <label>Due Date</label><input type="date" id="dueDateIn">
-            </div>
-            <div>
-                <button id="submitTask" class="main-btn">Submit</button>
-                <button id="exitForm" class="main-btn">Exit</button>
-            </div>
-        </div>
-        </form>
-
-        <div class="manageCategories manage">
-            <input type="text" id="newCategoryIn" placeholder="Type your new category here."><br>
-            <button id="addCategory" class="main-btn"><i class="fa fa-plus-square" aria-hidden="true"></i> Add Category</button>
-            <table class="categoryTable">
-                <thead>
-                    <tr>
-                        <th>Category</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
-                    </tr>
-                </thead>
-                <tbody class="categoryList">
-
-                </tbody>
-            </table>
-            <button id="exitCategoryManager" class="main-btn">Exit</button>
-        </div>
-
 
         <div class="taskList">
             <label>Filter </label>
@@ -76,6 +38,46 @@
 
                 </tbody>
             </table>
+        </div>
+
+        <form class="newTaskForm manage">
+            <div class="manage-container">
+            <label>New Task</label>
+            <input type="text" id="taskNameIn" placeholder="What do you need to do?">
+            <div class="selectCategory">
+                <label>Category</label>
+                <select id="categoryIn">
+                <option value="None">(Select)</option>
+            </select>
+            </div>
+            <div>
+                <label>Due Date</label><input type="date" id="dueDateIn">
+            </div>
+            <div>
+                <button id="submitTask" class="main-btn">Submit</button>
+                <button id="exitForm" class="main-btn">Exit</button>
+            </div>
+        </div>
+        </form>
+
+        <div class="manageCategories manage">
+            <div class="manage-container">
+                <input type="text" id="newCategoryIn" placeholder="Type your new category here."><br>
+                <button id="addCategory" class="main-btn"><i class="fa fa-plus-square" aria-hidden="true"></i> Add Category</button>
+                <table class="categoryTable">
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody class="categoryList">
+
+                    </tbody>
+                </table>
+                <button id="exitCategoryManager" class="main-btn">Exit</button>
+            </div>
         </div>
     </div>
 </body>
